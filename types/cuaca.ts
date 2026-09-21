@@ -11,3 +11,10 @@ kota: string;
 suhu: number;
 tingkatAQI: TingkatAQI;
 }
+// types/cuaca.ts (tambahan)
+export interface LaporanUdara {
+  kota: string;
+  indeksAQI: number;
+  tingkat: "BAIK" | "SEDANG" | "TIDAK_SEHAT" | "BERBAHAYA";
+  diperbaruiPada?: string;
+}
