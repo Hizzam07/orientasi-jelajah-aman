@@ -1,6 +1,6 @@
 // components/IndikatorAQI.tsx
-import { View, Text } from "react-native";
-import { LaporanUdara } from "../../types/cuaca";
+import { Text, View } from "react-native";
+import { LaporanUdara } from "../types/cuaca";
 
 export default function IndikatorAQI({ kota, indeksAQI, tingkat, diperbaruiPada }: LaporanUdara) {
   function getWarna(tingkat: LaporanUdara["tingkat"]) {
