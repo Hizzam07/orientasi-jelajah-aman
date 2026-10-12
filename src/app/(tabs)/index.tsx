@@ -13,6 +13,7 @@ import { konversiTingkatAQI } from "../../services/weatherAdapter";
 import { labelKodeCuaca } from "../../constants/weatherCodes";
 import { HasilGeocoding } from "../../types/geocoding";
 import { DataCuacaLengkap, DataKualitasUdara } from "../..//types/weather";
+import { mintaIzinLokasi, ambilKoordinatSaatIni } from "../../services/locationService";
 
 export default function HalamanUtama() {
   const [teksCari, setTeksCari] = useState("");
@@ -25,6 +26,7 @@ export default function HalamanUtama() {
 
   const teksTertunda = useDebounce(teksCari, 500);
   const requestIdRef = useRef(0);
+  const [pesanLokasi, setPesanLokasi] = useState<string | null>(null);
 
   useEffect(() => {
     if (teksTertunda.trim().length === 0) {
@@ -63,10 +65,32 @@ export default function HalamanUtama() {
       }
     }
   }
+  async function gunakanLokasiSaatIni() {
+const status = await mintaIzinLokasi();
+if (status === "denied") {
+setPesanLokasi("Izin lokasi ditolak. Silakan cari kota secara manual di atas.");
+return;
+}
+if (status === "unavailable") {
+setPesanLokasi("Layanan lokasi tidak aktif di perangkat ini. Silakan cari kota secaramanual.");
+return;
+}
+setPesanLokasi(null);
+const koordinat = await ambilKoordinatSaatIni();
+pilihKota({
+id: -1,
+name: "Lokasi Saat Ini",
+latitude: koordinat.latitude,
+longitude: koordinat.longitude,
+country: "",
+});
+}
 
   return (
     <SafeAreaView style={{ flex: 1, padding: 16 }}>
      <SearchBox onCari={setTeksCari} />
+     <Button title="Gunakan Lokasi Saat Ini" onPress={gunakanLokasiSaatIni} />
+     {pesanLokasi && <Text>{pesanLokasi}</Text>}
 
       {hasilPencarian.length > 0 && (
         <View style={{ marginVertical: 8 }}>
