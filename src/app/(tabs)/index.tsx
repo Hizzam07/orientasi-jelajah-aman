@@ -14,6 +14,7 @@ import { labelKodeCuaca } from "../../constants/weatherCodes";
 import { HasilGeocoding } from "../../types/geocoding";
 import { DataCuacaLengkap, DataKualitasUdara } from "../..//types/weather";
 import { mintaIzinLokasi, ambilKoordinatSaatIni } from "../../services/locationService";
+import { router } from "expo-router";
 
 export default function HalamanUtama() {
   const [teksCari, setTeksCari] = useState("");
@@ -126,6 +127,21 @@ country: "",
             tingkatAQI={kualitasUdara ? konversiTingkatAQI(kualitasUdara.indeksAQI) : "BAIK"}
             indeksAQI={kualitasUdara?.indeksAQI}
           />
+          <Button
+            title="Tambahkan ke Favorit"
+            onPress={() =>
+              router.push({
+                pathname: "/tambah-favorit",
+                params: {
+                  id: String(kotaTerpilih.id),
+                  nama: kotaTerpilih.name,
+                  lat: String(kotaTerpilih.latitude),
+                  lon: String(kotaTerpilih.longitude),
+                },
+              })
+            }
+          />
+          
 
           {/* 1. Menampilkan Suhu Maksimal & Minimal Harian */}
           <View style={{ marginTop: 8, paddingHorizontal: 4 }}>
