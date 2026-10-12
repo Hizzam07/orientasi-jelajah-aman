@@ -15,6 +15,7 @@ import { HasilGeocoding } from "../../types/geocoding";
 import { DataCuacaLengkap, DataKualitasUdara } from "../..//types/weather";
 import { mintaIzinLokasi, ambilKoordinatSaatIni } from "../../services/locationService";
 import { router } from "expo-router";
+import { ambilSemuaFavorit } from "../../services/favoritStorage";
 
 export default function HalamanUtama() {
   const [teksCari, setTeksCari] = useState("");
@@ -28,6 +29,21 @@ export default function HalamanUtama() {
   const teksTertunda = useDebounce(teksCari, 500);
   const requestIdRef = useRef(0);
   const [pesanLokasi, setPesanLokasi] = useState<string | null>(null);
+  const [isFavorit, setIsFavorit] = useState<boolean>(false);
+
+
+  useEffect(() => {
+    async function cekStatusFavorit() {
+      if (kotaTerpilih) {
+        const daftar = await ambilSemuaFavorit();
+        const sudahAda = daftar.some((k) => k.id === kotaTerpilih.id);
+        setIsFavorit(sudahAda);
+      } else {
+        setIsFavorit(false);
+      }
+    }
+    cekStatusFavorit();
+  }, [kotaTerpilih]);
 
   useEffect(() => {
     if (teksTertunda.trim().length === 0) {
@@ -128,7 +144,8 @@ country: "",
             indeksAQI={kualitasUdara?.indeksAQI}
           />
           <Button
-            title="Tambahkan ke Favorit"
+            title={isFavorit ? "Sudah di Favorit" : "Tambahkan ke Favorit"}
+            disabled={isFavorit}
             onPress={() =>
               router.push({
                 pathname: "/tambah-favorit",
