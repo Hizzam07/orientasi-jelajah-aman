@@ -1,0 +1,47 @@
+[33mcba99ad[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m feat: tambah tombol hapus data cuaca tersimpan
+[33m4c68b8e[m feat: integrasikan cache offline-first dan status data ke Beranda
+[33m2537d04[m feat: tambah komponen indikator status data
+[33m11882eb[m feat: buat repository offline-first dengan TTL 30 menit
+[33mdf59436[m feat: buat cache repository untuk SQLite
+[33m40408c1[m feat: tambah tipe data untuk cache dan sumber data
+[33m74075f5[m feat: pasang expo-sqlite dan buat database dengan migrasi
+[33m6885e7a[m feat: tambah konfirmasi hapus, jumlah favorit, dan cek duplikat
+[33m99afe90[m feat: tampilkan daftar favorit sungguhan dari AsyncStorage
+[33meff5bda[m feat: sambungkan modal tambah favorit ke AsyncStorage
+[33m22b9999[m feat: aktifkan tombol tambah favorit di Beranda
+[33m648a004[m feat: buat service penyimpanan favorit dengan AsyncStorage
+[33m12aa735[m feat: tambah tipe data KotaFavorit
+[33m6fe37ad[m feat: tambah tombol gunakan lokasi saat ini dengan 3 kondisi izin
+[33m2ba868a[m feat: pasang expo-location dan buat service permission
+[33m621f39a[m feat: integrasikan cuaca dan kualitas udara ke Beranda
+[33m611fa69[m feat: tambah atribusi indeks AQI
+[33md3f8beb[m feat: tambah atribusi Open-Meteo sesuai ketentuan lisensi
+[33m56658e0[m feat: buat service layer cuaca dengan timeout
+[33m7292504[m feat: tambah adapter konversi indeks AQI ke kategori
+[33mae34b2e[m feat: buat service layer kualitas udara
+[33me22605f[m feat: buat service layer cuaca dengan timeout
+[33m538a8dc[m feat: tambah kamus kode cuaca WMO
+[33mda41483[m feat: tambah tipe data cuaca dan kualitas udara
+[33m37c0ac3[m[33m ([m[1;31morigin/main[m[33m)[m refactor: pindahkan types/cuaca dan perbarui komponen
+[33m53b2a5f[m feat: tambah indikator jumlah hasil dan accessibility label
+[33m1972075[m feat: ubah SearchBox agar mendukung live search dengan debounce
+[33m3499e19[m feat: integrasikan debounce dan geocoding service ke Beranda
+[33m315fe2d[m feat: buat custom hook useDebounce
+[33mffb9701[m feat: buat service layer untuk Geocoding API
+[33mbeff1e9[m feat: tambah tipe data untuk respons Geocoding API
+[33m1b614c1[m fix: lengkapi tombol tambah favorit yang tertinggal di Pertemuan 3
+[33ma907260[m feat: tambah tab Tentang dengan accessibility dan hierarki visual
+[33m1516cc8[m feat: tambah accessibility label pada elemen interaktif
+[33m567ae7a[m feat: tambah SafeAreaView dan responsive layout
+[33mcfdbb70[m feat: tambah type scale dan spacing system
+[33me1cab1a[m feat: tambah modal tambah favorit
+[33m6ebcaee[m tambah halaman detail dan navigasi dari RiwayatList
+[33mec8e9f8[m feat: buat tab navigation Beranda, Riwayat, Pengaturan
+[33mddc0de8[m chore: restrukturisasi folder untuk Expo Router
+[33m01c0310[m Feat: membuat interface LaporanUdara dan komponen IndikatorAQI
+[33m8cb3a2b[m feat: gabungkan komponen di halaman utama dan tambah useEffect
+[33m9f24285[m feat: buat komponen RiwayatList
+[33m9deab1e[m feat: buat komponen SearchBox dengan useState
+[33m31b79fd[m feat: buat komponen WeatherCard
+[33mcb08fc2[m feat: tambah interface DataCuaca dan WeatherCardProps
+[33mc336b96[m Initial commit
